@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+import "google/protobuf/empty.proto";
+import "google/protobuf/timestamp.proto";
+
+package dawn;
+
+service Groups {
+  rpc Add (Group) returns (Group) {}
+  rpc Get (Group) returns (Group) {}
+  rpc Update (Group) returns (Group) {}
+  rpc List (google.protobuf.Empty) returns (stream Group) {}
+  rpc Delete (Group) returns (google.protobuf.Empty) {}
+}
+
+message Group {
+  string id = 1;
+  string name = 2;
+  string description = 3;
+  string icon = 4;
+  repeated string members = 5;
+  map<string,string> labels = 6;
+  google.protobuf.Timestamp created = 7;  
+}

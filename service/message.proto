@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+import "user.proto";
+import "google/protobuf/empty.proto";
+import "google/protobuf/timestamp.proto";
+
+package dawn;
+
+service Messages {
+  rpc Send (Message) returns (google.protobuf.Empty) {}
+  rpc Receive (User) returns (stream Message) {}
+  rpc Publish (Topic) returns (google.protobuf.Empty) {}
+  rpc Subscribe (Topic) returns (stream Topic) {}
+}
+
+message Message {
+  string id = 1;
+  string content = 2;
+  repeated string images = 3;
+  repeated string videos = 4;
+  string to = 5;
+  string from = 6;
+  map<string,string> labels = 7;
+  google.protobuf.Timestamp created = 8;  
+}
+
+message Topic {
+  string groupId = 1;
+  Message message = 2;
+}

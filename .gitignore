@@ -1,0 +1,6 @@
+# General
+debug
+\.vscode
+bundles
+go.sum
+internal/impl/biz/key.go
