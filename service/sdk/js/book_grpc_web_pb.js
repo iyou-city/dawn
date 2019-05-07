@@ -98,6 +98,61 @@ proto.dawn.BooksPromiseClient =
  *   !proto.dawn.Book,
  *   !proto.dawn.Book>}
  */
+const methodInfo_Books_Add = new grpc.web.AbstractClientBase.MethodInfo(
+  proto.dawn.Book,
+  /** @param {!proto.dawn.Book} request */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.dawn.Book.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.dawn.Book} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.Error, ?proto.dawn.Book)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.dawn.Book>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.dawn.BooksClient.prototype.add =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/dawn.Books/Add',
+      request,
+      metadata || {},
+      methodInfo_Books_Add,
+      callback);
+};
+
+
+/**
+ * @param {!proto.dawn.Book} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.dawn.Book>}
+ *     A native promise that resolves to the response
+ */
+proto.dawn.BooksPromiseClient.prototype.add =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/dawn.Books/Add',
+      request,
+      metadata || {},
+      methodInfo_Books_Add);
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.AbstractClientBase.MethodInfo<
+ *   !proto.dawn.Book,
+ *   !proto.dawn.Book>}
+ */
 const methodInfo_Books_List = new grpc.web.AbstractClientBase.MethodInfo(
   proto.dawn.Book,
   /** @param {!proto.dawn.Book} request */

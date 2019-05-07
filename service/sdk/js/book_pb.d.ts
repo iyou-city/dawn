@@ -11,8 +11,10 @@ export class Book extends jspb.Message {
   getTitle(): string;
   setTitle(value: string): void;
 
-  getCover(): string;
-  setCover(value: string): void;
+  getCover(): Media | undefined;
+  setCover(value?: Media): void;
+  hasCover(): boolean;
+  clearCover(): void;
 
   getPageList(): Array<Page>;
   setPageList(value: Array<Page>): void;
@@ -48,7 +50,7 @@ export namespace Book {
   export type AsObject = {
     id: string,
     title: string,
-    cover: string,
+    cover?: Media.AsObject,
     pageList: Array<Page.AsObject>,
     reader: string,
     count: string,
@@ -62,11 +64,15 @@ export class Page extends jspb.Message {
   getName(): string;
   setName(value: string): void;
 
-  getPicture(): string;
-  setPicture(value: string): void;
+  getPicture(): Media | undefined;
+  setPicture(value?: Media): void;
+  hasPicture(): boolean;
+  clearPicture(): void;
 
-  getSound(): string;
-  setSound(value: string): void;
+  getSound(): Media | undefined;
+  setSound(value?: Media): void;
+  hasSound(): boolean;
+  clearSound(): void;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): Page.AsObject;
@@ -79,8 +85,26 @@ export class Page extends jspb.Message {
 export namespace Page {
   export type AsObject = {
     name: string,
-    picture: string,
-    sound: string,
+    picture?: Media.AsObject,
+    sound?: Media.AsObject,
+  }
+}
+
+export class Media extends jspb.Message {
+  getUrl(): string;
+  setUrl(value: string): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): Media.AsObject;
+  static toObject(includeInstance: boolean, msg: Media): Media.AsObject;
+  static serializeBinaryToWriter(message: Media, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): Media;
+  static deserializeBinaryFromReader(message: Media, reader: jspb.BinaryReader): Media;
+}
+
+export namespace Media {
+  export type AsObject = {
+    url: string,
   }
 }
 

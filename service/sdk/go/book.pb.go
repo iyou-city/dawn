@@ -27,7 +27,7 @@ const _ = proto.GoGoProtoPackageIsVersion2 // please upgrade the proto package
 type Book struct {
 	Id       string            `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	Title    string            `protobuf:"bytes,2,opt,name=title,proto3" json:"title,omitempty"`
-	Cover    string            `protobuf:"bytes,3,opt,name=cover,proto3" json:"cover,omitempty"`
+	Cover    *Media            `protobuf:"bytes,3,opt,name=cover,proto3" json:"cover,omitempty"`
 	Page     []*Page           `protobuf:"bytes,4,rep,name=page,proto3" json:"page,omitempty"`
 	Reader   string            `protobuf:"bytes,5,opt,name=reader,proto3" json:"reader,omitempty"`
 	Count    string            `protobuf:"bytes,6,opt,name=count,proto3" json:"count,omitempty"`
@@ -83,11 +83,11 @@ func (m *Book) GetTitle() string {
 	return ""
 }
 
-func (m *Book) GetCover() string {
+func (m *Book) GetCover() *Media {
 	if m != nil {
 		return m.Cover
 	}
-	return ""
+	return nil
 }
 
 func (m *Book) GetPage() []*Page {
@@ -134,8 +134,8 @@ func (m *Book) GetCreated() *types.Timestamp {
 
 type Page struct {
 	Name    string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
-	Picture string `protobuf:"bytes,2,opt,name=picture,proto3" json:"picture,omitempty"`
-	Sound   string `protobuf:"bytes,3,opt,name=sound,proto3" json:"sound,omitempty"`
+	Picture *Media `protobuf:"bytes,2,opt,name=picture,proto3" json:"picture,omitempty"`
+	Sound   *Media `protobuf:"bytes,3,opt,name=sound,proto3" json:"sound,omitempty"`
 }
 
 func (m *Page) Reset()         { *m = Page{} }
@@ -178,16 +178,60 @@ func (m *Page) GetName() string {
 	return ""
 }
 
-func (m *Page) GetPicture() string {
+func (m *Page) GetPicture() *Media {
 	if m != nil {
 		return m.Picture
 	}
-	return ""
+	return nil
 }
 
-func (m *Page) GetSound() string {
+func (m *Page) GetSound() *Media {
 	if m != nil {
 		return m.Sound
+	}
+	return nil
+}
+
+type Media struct {
+	Url string `protobuf:"bytes,1,opt,name=url,proto3" json:"url,omitempty"`
+}
+
+func (m *Media) Reset()         { *m = Media{} }
+func (m *Media) String() string { return proto.CompactTextString(m) }
+func (*Media) ProtoMessage()    {}
+func (*Media) Descriptor() ([]byte, []int) {
+	return fileDescriptor_1e89d0eaa98dc5d8, []int{2}
+}
+func (m *Media) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *Media) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_Media.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalTo(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *Media) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_Media.Merge(m, src)
+}
+func (m *Media) XXX_Size() int {
+	return m.Size()
+}
+func (m *Media) XXX_DiscardUnknown() {
+	xxx_messageInfo_Media.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_Media proto.InternalMessageInfo
+
+func (m *Media) GetUrl() string {
+	if m != nil {
+		return m.Url
 	}
 	return ""
 }
@@ -196,37 +240,40 @@ func init() {
 	proto.RegisterType((*Book)(nil), "dawn.Book")
 	proto.RegisterMapType((map[string]string)(nil), "dawn.Book.LabelsEntry")
 	proto.RegisterType((*Page)(nil), "dawn.Page")
+	proto.RegisterType((*Media)(nil), "dawn.Media")
 }
 
 func init() { proto.RegisterFile("book.proto", fileDescriptor_1e89d0eaa98dc5d8) }
 
 var fileDescriptor_1e89d0eaa98dc5d8 = []byte{
-	// 385 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x5c, 0x50, 0xc1, 0x8a, 0xdb, 0x30,
-	0x14, 0xb4, 0x1c, 0xc7, 0xe9, 0xbe, 0x40, 0x29, 0xa2, 0x2c, 0xc2, 0x05, 0x35, 0xf8, 0x14, 0x28,
-	0x68, 0x4b, 0xda, 0x43, 0xdb, 0xe3, 0x42, 0x2f, 0x65, 0x0f, 0xc5, 0xf4, 0x07, 0x64, 0xfb, 0xd5,
-	0x98, 0xd8, 0x96, 0x91, 0xe5, 0x5d, 0xfc, 0x17, 0xfd, 0xac, 0x5e, 0x0a, 0x39, 0xf6, 0x58, 0x92,
-	0x1f, 0x29, 0x92, 0xed, 0x6c, 0xc8, 0xed, 0xcd, 0xcc, 0x7b, 0x23, 0xcd, 0x00, 0xa4, 0x4a, 0xed,
-	0x45, 0xab, 0x95, 0x51, 0x34, 0xc8, 0xe5, 0x53, 0x13, 0xbd, 0x29, 0x94, 0x2a, 0x2a, 0xbc, 0x73,
-	0x5c, 0xda, 0xff, 0xbc, 0xc3, 0xba, 0x35, 0xc3, 0xb8, 0x12, 0xf1, 0x6b, 0xf1, 0x49, 0xcb, 0xb6,
-	0x45, 0xdd, 0x4d, 0xfa, 0xdb, 0x6b, 0xdd, 0x94, 0x35, 0x76, 0x46, 0xd6, 0xed, 0xb8, 0x10, 0xff,
-	0xf1, 0x21, 0xb8, 0x57, 0x6a, 0x4f, 0x5f, 0x82, 0x5f, 0xe6, 0x8c, 0x6c, 0xc8, 0xf6, 0x26, 0xf1,
-	0xcb, 0x9c, 0xbe, 0x86, 0xa5, 0x29, 0x4d, 0x85, 0xcc, 0x77, 0xd4, 0x08, 0x2c, 0x9b, 0xa9, 0x47,
-	0xd4, 0x6c, 0x31, 0xb2, 0x0e, 0x50, 0x0e, 0x41, 0x2b, 0x0b, 0x64, 0xc1, 0x66, 0xb1, 0x5d, 0xef,
-	0x40, 0xd8, 0x7f, 0x8b, 0xef, 0xb2, 0xc0, 0xc4, 0xf1, 0xf4, 0x16, 0x42, 0x8d, 0x32, 0x47, 0xcd,
-	0x96, 0xee, 0x6c, 0x42, 0xa3, 0x5b, 0xdf, 0x18, 0x16, 0xce, 0x6e, 0x7d, 0x63, 0x68, 0x04, 0x2f,
-	0x32, 0x69, 0xb0, 0x50, 0x7a, 0x60, 0x2b, 0x27, 0x9c, 0x31, 0x15, 0x10, 0x56, 0x32, 0xc5, 0xaa,
-	0x63, 0x37, 0xee, 0xad, 0xdb, 0xf1, 0x2d, 0x9b, 0x40, 0x3c, 0x38, 0xe1, 0x6b, 0x63, 0xf4, 0x90,
-	0x4c, 0x5b, 0xf4, 0x23, 0xac, 0x32, 0x8d, 0xd2, 0x60, 0xce, 0x60, 0x43, 0xb6, 0xeb, 0x5d, 0x24,
-	0xc6, 0x46, 0xc4, 0xdc, 0x88, 0xf8, 0x31, 0x37, 0x92, 0xcc, 0xab, 0xd1, 0x67, 0x58, 0x5f, 0x98,
-	0xd1, 0x57, 0xb0, 0xd8, 0xe3, 0x30, 0x75, 0x63, 0x47, 0xfb, 0xf1, 0x47, 0x59, 0xf5, 0xe7, 0x72,
-	0x1c, 0xf8, 0xe2, 0x7f, 0x22, 0xf1, 0x37, 0x08, 0x6c, 0x70, 0x4a, 0x21, 0x68, 0x64, 0x8d, 0xd3,
-	0x91, 0x9b, 0x29, 0x83, 0x55, 0x5b, 0x66, 0xa6, 0xd7, 0xf3, 0xdd, 0x0c, 0xad, 0x5f, 0xa7, 0xfa,
-	0x26, 0x9f, 0x6b, 0x75, 0x60, 0xf7, 0x0e, 0x96, 0x36, 0x58, 0x47, 0x63, 0x08, 0x1e, 0xca, 0xce,
-	0x50, 0x78, 0x4e, 0x1b, 0x5d, 0xcc, 0xb1, 0xf7, 0x9e, 0xdc, 0xb3, 0xdf, 0x47, 0x4e, 0x0e, 0x47,
-	0x4e, 0xfe, 0x1d, 0x39, 0xf9, 0x75, 0xe2, 0xde, 0xe1, 0xc4, 0xbd, 0xbf, 0x27, 0xee, 0xa5, 0xa1,
-	0x8b, 0xfa, 0xe1, 0x7f, 0x00, 0x00, 0x00, 0xff, 0xff, 0x87, 0xdd, 0xe2, 0xb4, 0x5b, 0x02, 0x00,
-	0x00,
+	// 420 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x74, 0x90, 0xd1, 0x8a, 0xd3, 0x40,
+	0x14, 0x86, 0x9b, 0x34, 0x69, 0xdd, 0x53, 0x10, 0x39, 0xc8, 0x32, 0x46, 0xc8, 0xd6, 0x80, 0xd0,
+	0xab, 0xac, 0x54, 0x2f, 0xd4, 0x3b, 0x17, 0xbc, 0xab, 0x20, 0xc1, 0x17, 0x98, 0x66, 0x8e, 0x21,
+	0x34, 0xcd, 0x84, 0xc9, 0x64, 0x97, 0xbc, 0x85, 0x8f, 0xe5, 0xe5, 0x5e, 0x8a, 0x57, 0xd2, 0xbe,
+	0x88, 0xcc, 0x4c, 0xb2, 0x96, 0xe2, 0xde, 0xcd, 0x7f, 0xfe, 0x7f, 0xe6, 0xfc, 0xf3, 0x01, 0x6c,
+	0xa5, 0xdc, 0xa5, 0x8d, 0x92, 0x5a, 0x62, 0x20, 0xf8, 0x5d, 0x1d, 0xbd, 0x2c, 0xa4, 0x2c, 0x2a,
+	0xba, 0xb6, 0xb3, 0x6d, 0xf7, 0xfd, 0x9a, 0xf6, 0x8d, 0xee, 0x5d, 0x24, 0x8a, 0xcf, 0xcd, 0x3b,
+	0xc5, 0x9b, 0x86, 0x54, 0x3b, 0xf8, 0x57, 0xe7, 0xbe, 0x2e, 0xf7, 0xd4, 0x6a, 0xbe, 0x6f, 0x5c,
+	0x20, 0xf9, 0xed, 0x43, 0x70, 0x23, 0xe5, 0x0e, 0x9f, 0x82, 0x5f, 0x0a, 0xe6, 0x2d, 0xbd, 0xd5,
+	0x45, 0xe6, 0x97, 0x02, 0x9f, 0x43, 0xa8, 0x4b, 0x5d, 0x11, 0xf3, 0xed, 0xc8, 0x09, 0x7c, 0x05,
+	0x61, 0x2e, 0x6f, 0x49, 0xb1, 0xe9, 0xd2, 0x5b, 0x2d, 0xd6, 0x8b, 0xd4, 0x54, 0x4c, 0xbf, 0x90,
+	0x28, 0x79, 0xe6, 0x1c, 0x8c, 0x21, 0x68, 0x78, 0x41, 0x2c, 0x58, 0x4e, 0x57, 0x8b, 0x35, 0xb8,
+	0xc4, 0x57, 0x5e, 0x50, 0x66, 0xe7, 0x78, 0x09, 0x33, 0x45, 0x5c, 0x90, 0x62, 0xa1, 0x7d, 0x79,
+	0x50, 0x66, 0x61, 0x2e, 0xbb, 0x5a, 0xb3, 0x99, 0x5b, 0x68, 0x05, 0x46, 0xf0, 0x24, 0xe7, 0x9a,
+	0x0a, 0xa9, 0x7a, 0x36, 0xb7, 0xc6, 0x83, 0xc6, 0x14, 0x66, 0x15, 0xdf, 0x52, 0xd5, 0xb2, 0x0b,
+	0xbb, 0xeb, 0xd2, 0xed, 0x32, 0xdf, 0x49, 0x37, 0xd6, 0xf8, 0x5c, 0x6b, 0xd5, 0x67, 0x43, 0x0a,
+	0xdf, 0xc1, 0x3c, 0x57, 0xc4, 0x35, 0x09, 0x06, 0xb6, 0x7e, 0x94, 0x3a, 0x3c, 0xe9, 0x88, 0x27,
+	0xfd, 0x36, 0xe2, 0xc9, 0xc6, 0x68, 0xf4, 0x01, 0x16, 0x27, 0x8f, 0xe1, 0x33, 0x98, 0xee, 0xa8,
+	0x1f, 0x40, 0x99, 0xa3, 0x29, 0x7e, 0xcb, 0xab, 0xee, 0x81, 0x94, 0x15, 0x1f, 0xfd, 0xf7, 0x5e,
+	0x22, 0x20, 0x30, 0x1f, 0x47, 0x84, 0xa0, 0xe6, 0x7b, 0x1a, 0x2e, 0xd9, 0x33, 0xbe, 0x86, 0x79,
+	0x53, 0xe6, 0xba, 0x53, 0xee, 0xde, 0x19, 0xcb, 0xd1, 0x33, 0xc0, 0x5b, 0xd9, 0xd5, 0xe2, 0xbf,
+	0xc0, 0xad, 0x93, 0xbc, 0x80, 0xd0, 0x6a, 0x53, 0xad, 0x53, 0xd5, 0x58, 0xad, 0x53, 0xd5, 0x7a,
+	0x03, 0xa1, 0xa1, 0xd1, 0xe2, 0x15, 0x4c, 0x3f, 0x09, 0x81, 0xf0, 0x8f, 0x50, 0x74, 0x72, 0x4e,
+	0x26, 0x98, 0x40, 0xb0, 0x29, 0x5b, 0xfd, 0x78, 0xe2, 0x8d, 0x77, 0xc3, 0x7e, 0x1e, 0x62, 0xef,
+	0xfe, 0x10, 0x7b, 0x7f, 0x0e, 0xb1, 0xf7, 0xe3, 0x18, 0x4f, 0xee, 0x8f, 0xf1, 0xe4, 0xd7, 0x31,
+	0x9e, 0x6c, 0x67, 0x16, 0xe0, 0xdb, 0xbf, 0x01, 0x00, 0x00, 0xff, 0xff, 0xde, 0x19, 0x2f, 0xce,
+	0xbe, 0x02, 0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -241,7 +288,7 @@ const _ = grpc.SupportPackageIsVersion4
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type BooksClient interface {
-	// rpc Add(Article) returns (Article) {}
+	Add(ctx context.Context, in *Book, opts ...grpc.CallOption) (*Book, error)
 	// rpc Get(Article) returns (Article) {}
 	// rpc Update(Article) returns (Article) {}
 	List(ctx context.Context, in *Book, opts ...grpc.CallOption) (Books_ListClient, error)
@@ -253,6 +300,15 @@ type booksClient struct {
 
 func NewBooksClient(cc *grpc.ClientConn) BooksClient {
 	return &booksClient{cc}
+}
+
+func (c *booksClient) Add(ctx context.Context, in *Book, opts ...grpc.CallOption) (*Book, error) {
+	out := new(Book)
+	err := c.cc.Invoke(ctx, "/dawn.Books/Add", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
 }
 
 func (c *booksClient) List(ctx context.Context, in *Book, opts ...grpc.CallOption) (Books_ListClient, error) {
@@ -289,7 +345,7 @@ func (x *booksListClient) Recv() (*Book, error) {
 
 // BooksServer is the server API for Books service.
 type BooksServer interface {
-	// rpc Add(Article) returns (Article) {}
+	Add(context.Context, *Book) (*Book, error)
 	// rpc Get(Article) returns (Article) {}
 	// rpc Update(Article) returns (Article) {}
 	List(*Book, Books_ListServer) error
@@ -297,6 +353,24 @@ type BooksServer interface {
 
 func RegisterBooksServer(s *grpc.Server, srv BooksServer) {
 	s.RegisterService(&_Books_serviceDesc, srv)
+}
+
+func _Books_Add_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(Book)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(BooksServer).Add(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/dawn.Books/Add",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(BooksServer).Add(ctx, req.(*Book))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
 func _Books_List_Handler(srv interface{}, stream grpc.ServerStream) error {
@@ -323,7 +397,12 @@ func (x *booksListServer) Send(m *Book) error {
 var _Books_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "dawn.Books",
 	HandlerType: (*BooksServer)(nil),
-	Methods:     []grpc.MethodDesc{},
+	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "Add",
+			Handler:    _Books_Add_Handler,
+		},
+	},
 	Streams: []grpc.StreamDesc{
 		{
 			StreamName:    "List",
@@ -361,11 +440,15 @@ func (m *Book) MarshalTo(dAtA []byte) (int, error) {
 		i = encodeVarintBook(dAtA, i, uint64(len(m.Title)))
 		i += copy(dAtA[i:], m.Title)
 	}
-	if len(m.Cover) > 0 {
+	if m.Cover != nil {
 		dAtA[i] = 0x1a
 		i++
-		i = encodeVarintBook(dAtA, i, uint64(len(m.Cover)))
-		i += copy(dAtA[i:], m.Cover)
+		i = encodeVarintBook(dAtA, i, uint64(m.Cover.Size()))
+		n1, err := m.Cover.MarshalTo(dAtA[i:])
+		if err != nil {
+			return 0, err
+		}
+		i += n1
 	}
 	if len(m.Page) > 0 {
 		for _, msg := range m.Page {
@@ -418,11 +501,11 @@ func (m *Book) MarshalTo(dAtA []byte) (int, error) {
 		dAtA[i] = 0x52
 		i++
 		i = encodeVarintBook(dAtA, i, uint64(m.Created.Size()))
-		n1, err := m.Created.MarshalTo(dAtA[i:])
+		n2, err := m.Created.MarshalTo(dAtA[i:])
 		if err != nil {
 			return 0, err
 		}
-		i += n1
+		i += n2
 	}
 	return i, nil
 }
@@ -448,17 +531,49 @@ func (m *Page) MarshalTo(dAtA []byte) (int, error) {
 		i = encodeVarintBook(dAtA, i, uint64(len(m.Name)))
 		i += copy(dAtA[i:], m.Name)
 	}
-	if len(m.Picture) > 0 {
+	if m.Picture != nil {
 		dAtA[i] = 0x12
 		i++
-		i = encodeVarintBook(dAtA, i, uint64(len(m.Picture)))
-		i += copy(dAtA[i:], m.Picture)
+		i = encodeVarintBook(dAtA, i, uint64(m.Picture.Size()))
+		n3, err := m.Picture.MarshalTo(dAtA[i:])
+		if err != nil {
+			return 0, err
+		}
+		i += n3
 	}
-	if len(m.Sound) > 0 {
+	if m.Sound != nil {
 		dAtA[i] = 0x1a
 		i++
-		i = encodeVarintBook(dAtA, i, uint64(len(m.Sound)))
-		i += copy(dAtA[i:], m.Sound)
+		i = encodeVarintBook(dAtA, i, uint64(m.Sound.Size()))
+		n4, err := m.Sound.MarshalTo(dAtA[i:])
+		if err != nil {
+			return 0, err
+		}
+		i += n4
+	}
+	return i, nil
+}
+
+func (m *Media) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalTo(dAtA)
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *Media) MarshalTo(dAtA []byte) (int, error) {
+	var i int
+	_ = i
+	var l int
+	_ = l
+	if len(m.Url) > 0 {
+		dAtA[i] = 0xa
+		i++
+		i = encodeVarintBook(dAtA, i, uint64(len(m.Url)))
+		i += copy(dAtA[i:], m.Url)
 	}
 	return i, nil
 }
@@ -486,8 +601,8 @@ func (m *Book) Size() (n int) {
 	if l > 0 {
 		n += 1 + l + sovBook(uint64(l))
 	}
-	l = len(m.Cover)
-	if l > 0 {
+	if m.Cover != nil {
+		l = m.Cover.Size()
 		n += 1 + l + sovBook(uint64(l))
 	}
 	if len(m.Page) > 0 {
@@ -533,11 +648,24 @@ func (m *Page) Size() (n int) {
 	if l > 0 {
 		n += 1 + l + sovBook(uint64(l))
 	}
-	l = len(m.Picture)
-	if l > 0 {
+	if m.Picture != nil {
+		l = m.Picture.Size()
 		n += 1 + l + sovBook(uint64(l))
 	}
-	l = len(m.Sound)
+	if m.Sound != nil {
+		l = m.Sound.Size()
+		n += 1 + l + sovBook(uint64(l))
+	}
+	return n
+}
+
+func (m *Media) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	l = len(m.Url)
 	if l > 0 {
 		n += 1 + l + sovBook(uint64(l))
 	}
@@ -654,7 +782,7 @@ func (m *Book) Unmarshal(dAtA []byte) error {
 			if wireType != 2 {
 				return fmt.Errorf("proto: wrong wireType = %d for field Cover", wireType)
 			}
-			var stringLen uint64
+			var msglen int
 			for shift := uint(0); ; shift += 7 {
 				if shift >= 64 {
 					return ErrIntOverflowBook
@@ -664,23 +792,27 @@ func (m *Book) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				stringLen |= uint64(b&0x7F) << shift
+				msglen |= int(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
 			}
-			intStringLen := int(stringLen)
-			if intStringLen < 0 {
+			if msglen < 0 {
 				return ErrInvalidLengthBook
 			}
-			postIndex := iNdEx + intStringLen
+			postIndex := iNdEx + msglen
 			if postIndex < 0 {
 				return ErrInvalidLengthBook
 			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
-			m.Cover = string(dAtA[iNdEx:postIndex])
+			if m.Cover == nil {
+				m.Cover = &Media{}
+			}
+			if err := m.Cover.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+				return err
+			}
 			iNdEx = postIndex
 		case 4:
 			if wireType != 2 {
@@ -1064,7 +1196,7 @@ func (m *Page) Unmarshal(dAtA []byte) error {
 			if wireType != 2 {
 				return fmt.Errorf("proto: wrong wireType = %d for field Picture", wireType)
 			}
-			var stringLen uint64
+			var msglen int
 			for shift := uint(0); ; shift += 7 {
 				if shift >= 64 {
 					return ErrIntOverflowBook
@@ -1074,28 +1206,121 @@ func (m *Page) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				stringLen |= uint64(b&0x7F) << shift
+				msglen |= int(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
 			}
-			intStringLen := int(stringLen)
-			if intStringLen < 0 {
+			if msglen < 0 {
 				return ErrInvalidLengthBook
 			}
-			postIndex := iNdEx + intStringLen
+			postIndex := iNdEx + msglen
 			if postIndex < 0 {
 				return ErrInvalidLengthBook
 			}
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
-			m.Picture = string(dAtA[iNdEx:postIndex])
+			if m.Picture == nil {
+				m.Picture = &Media{}
+			}
+			if err := m.Picture.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+				return err
+			}
 			iNdEx = postIndex
 		case 3:
 			if wireType != 2 {
 				return fmt.Errorf("proto: wrong wireType = %d for field Sound", wireType)
 			}
+			var msglen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowBook
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				msglen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if msglen < 0 {
+				return ErrInvalidLengthBook
+			}
+			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthBook
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			if m.Sound == nil {
+				m.Sound = &Media{}
+			}
+			if err := m.Sound.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+				return err
+			}
+			iNdEx = postIndex
+		default:
+			iNdEx = preIndex
+			skippy, err := skipBook(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if skippy < 0 {
+				return ErrInvalidLengthBook
+			}
+			if (iNdEx + skippy) < 0 {
+				return ErrInvalidLengthBook
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *Media) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowBook
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: Media: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: Media: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Url", wireType)
+			}
 			var stringLen uint64
 			for shift := uint(0); ; shift += 7 {
 				if shift >= 64 {
@@ -1122,7 +1347,7 @@ func (m *Page) Unmarshal(dAtA []byte) error {
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
-			m.Sound = string(dAtA[iNdEx:postIndex])
+			m.Url = string(dAtA[iNdEx:postIndex])
 			iNdEx = postIndex
 		default:
 			iNdEx = preIndex

@@ -15,6 +15,7 @@ var google_protobuf_empty_pb = require('google-protobuf/google/protobuf/empty_pb
 var google_protobuf_wrappers_pb = require('google-protobuf/google/protobuf/wrappers_pb.js');
 var google_protobuf_timestamp_pb = require('google-protobuf/google/protobuf/timestamp_pb.js');
 goog.exportSymbol('proto.dawn.Book', null, global);
+goog.exportSymbol('proto.dawn.Media', null, global);
 goog.exportSymbol('proto.dawn.Page', null, global);
 
 /**
@@ -72,7 +73,7 @@ proto.dawn.Book.toObject = function(includeInstance, msg) {
   var f, obj = {
     id: jspb.Message.getFieldWithDefault(msg, 1, ""),
     title: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    cover: jspb.Message.getFieldWithDefault(msg, 3, ""),
+    cover: (f = msg.getCover()) && proto.dawn.Media.toObject(includeInstance, f),
     pageList: jspb.Message.toObjectList(msg.getPageList(),
     proto.dawn.Page.toObject, includeInstance),
     reader: jspb.Message.getFieldWithDefault(msg, 5, ""),
@@ -125,7 +126,8 @@ proto.dawn.Book.deserializeBinaryFromReader = function(msg, reader) {
       msg.setTitle(value);
       break;
     case 3:
-      var value = /** @type {string} */ (reader.readString());
+      var value = new proto.dawn.Media;
+      reader.readMessage(value,proto.dawn.Media.deserializeBinaryFromReader);
       msg.setCover(value);
       break;
     case 4:
@@ -200,10 +202,11 @@ proto.dawn.Book.serializeBinaryToWriter = function(message, writer) {
     );
   }
   f = message.getCover();
-  if (f.length > 0) {
-    writer.writeString(
+  if (f != null) {
+    writer.writeMessage(
       3,
-      f
+      f,
+      proto.dawn.Media.serializeBinaryToWriter
     );
   }
   f = message.getPageList();
@@ -281,17 +284,32 @@ proto.dawn.Book.prototype.setTitle = function(value) {
 
 
 /**
- * optional string cover = 3;
- * @return {string}
+ * optional Media cover = 3;
+ * @return {?proto.dawn.Media}
  */
 proto.dawn.Book.prototype.getCover = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
+  return /** @type{?proto.dawn.Media} */ (
+    jspb.Message.getWrapperField(this, proto.dawn.Media, 3));
 };
 
 
-/** @param {string} value */
+/** @param {?proto.dawn.Media|undefined} value */
 proto.dawn.Book.prototype.setCover = function(value) {
-  jspb.Message.setProto3StringField(this, 3, value);
+  jspb.Message.setWrapperField(this, 3, value);
+};
+
+
+proto.dawn.Book.prototype.clearCover = function() {
+  this.setCover(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {!boolean}
+ */
+proto.dawn.Book.prototype.hasCover = function() {
+  return jspb.Message.getField(this, 3) != null;
 };
 
 
@@ -467,8 +485,8 @@ proto.dawn.Page.prototype.toObject = function(opt_includeInstance) {
 proto.dawn.Page.toObject = function(includeInstance, msg) {
   var f, obj = {
     name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    picture: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    sound: jspb.Message.getFieldWithDefault(msg, 3, "")
+    picture: (f = msg.getPicture()) && proto.dawn.Media.toObject(includeInstance, f),
+    sound: (f = msg.getSound()) && proto.dawn.Media.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -510,11 +528,13 @@ proto.dawn.Page.deserializeBinaryFromReader = function(msg, reader) {
       msg.setName(value);
       break;
     case 2:
-      var value = /** @type {string} */ (reader.readString());
+      var value = new proto.dawn.Media;
+      reader.readMessage(value,proto.dawn.Media.deserializeBinaryFromReader);
       msg.setPicture(value);
       break;
     case 3:
-      var value = /** @type {string} */ (reader.readString());
+      var value = new proto.dawn.Media;
+      reader.readMessage(value,proto.dawn.Media.deserializeBinaryFromReader);
       msg.setSound(value);
       break;
     default:
@@ -554,17 +574,19 @@ proto.dawn.Page.serializeBinaryToWriter = function(message, writer) {
     );
   }
   f = message.getPicture();
-  if (f.length > 0) {
-    writer.writeString(
+  if (f != null) {
+    writer.writeMessage(
       2,
-      f
+      f,
+      proto.dawn.Media.serializeBinaryToWriter
     );
   }
   f = message.getSound();
-  if (f.length > 0) {
-    writer.writeString(
+  if (f != null) {
+    writer.writeMessage(
       3,
-      f
+      f,
+      proto.dawn.Media.serializeBinaryToWriter
     );
   }
 };
@@ -586,32 +608,204 @@ proto.dawn.Page.prototype.setName = function(value) {
 
 
 /**
- * optional string picture = 2;
- * @return {string}
+ * optional Media picture = 2;
+ * @return {?proto.dawn.Media}
  */
 proto.dawn.Page.prototype.getPicture = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
+  return /** @type{?proto.dawn.Media} */ (
+    jspb.Message.getWrapperField(this, proto.dawn.Media, 2));
 };
 
 
-/** @param {string} value */
+/** @param {?proto.dawn.Media|undefined} value */
 proto.dawn.Page.prototype.setPicture = function(value) {
-  jspb.Message.setProto3StringField(this, 2, value);
+  jspb.Message.setWrapperField(this, 2, value);
+};
+
+
+proto.dawn.Page.prototype.clearPicture = function() {
+  this.setPicture(undefined);
 };
 
 
 /**
- * optional string sound = 3;
- * @return {string}
+ * Returns whether this field is set.
+ * @return {!boolean}
+ */
+proto.dawn.Page.prototype.hasPicture = function() {
+  return jspb.Message.getField(this, 2) != null;
+};
+
+
+/**
+ * optional Media sound = 3;
+ * @return {?proto.dawn.Media}
  */
 proto.dawn.Page.prototype.getSound = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
+  return /** @type{?proto.dawn.Media} */ (
+    jspb.Message.getWrapperField(this, proto.dawn.Media, 3));
+};
+
+
+/** @param {?proto.dawn.Media|undefined} value */
+proto.dawn.Page.prototype.setSound = function(value) {
+  jspb.Message.setWrapperField(this, 3, value);
+};
+
+
+proto.dawn.Page.prototype.clearSound = function() {
+  this.setSound(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {!boolean}
+ */
+proto.dawn.Page.prototype.hasSound = function() {
+  return jspb.Message.getField(this, 3) != null;
+};
+
+
+
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.dawn.Media = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+};
+goog.inherits(proto.dawn.Media, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  proto.dawn.Media.displayName = 'proto.dawn.Media';
+}
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto suitable for use in Soy templates.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     com.google.apps.jspb.JsClassTemplate.JS_RESERVED_WORDS.
+ * @param {boolean=} opt_includeInstance Whether to include the JSPB instance
+ *     for transitional soy proto support: http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.dawn.Media.prototype.toObject = function(opt_includeInstance) {
+  return proto.dawn.Media.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Whether to include the JSPB
+ *     instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.dawn.Media} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.dawn.Media.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    url: jspb.Message.getFieldWithDefault(msg, 1, "")
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.dawn.Media}
+ */
+proto.dawn.Media.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.dawn.Media;
+  return proto.dawn.Media.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.dawn.Media} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.dawn.Media}
+ */
+proto.dawn.Media.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setUrl(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.dawn.Media.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.dawn.Media.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.dawn.Media} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.dawn.Media.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getUrl();
+  if (f.length > 0) {
+    writer.writeString(
+      1,
+      f
+    );
+  }
+};
+
+
+/**
+ * optional string url = 1;
+ * @return {string}
+ */
+proto.dawn.Media.prototype.getUrl = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
 };
 
 
 /** @param {string} value */
-proto.dawn.Page.prototype.setSound = function(value) {
-  jspb.Message.setProto3StringField(this, 3, value);
+proto.dawn.Media.prototype.setUrl = function(value) {
+  jspb.Message.setProto3StringField(this, 1, value);
 };
 
 

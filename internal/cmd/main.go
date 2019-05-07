@@ -24,6 +24,7 @@ func main() {
 	pb.RegisterUsersServer(s, new(impl.UsersImpl))
 	pb.RegisterMessagesServer(s, new(impl.MessageImpl))
 	pb.RegisterGroupsServer(s, new(impl.GroupsImpl))
+	pb.RegisterBooksServer(s, new(impl.BooksImpl))
 
 	grpclog.Println("begin..." + port)
 	if err := s.Serve(lis); err != nil {

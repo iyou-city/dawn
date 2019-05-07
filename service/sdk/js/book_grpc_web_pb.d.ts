@@ -11,6 +11,13 @@ export class BooksClient {
                credentials?: null | { [index: string]: string; },
                options?: null | { [index: string]: string; });
 
+  add(
+    request: Book,
+    metadata: grpcWeb.Metadata | undefined,
+    callback: (err: grpcWeb.Error,
+               response: Book) => void
+  ): grpcWeb.ClientReadableStream<Book>;
+
   list(
     request: Book,
     metadata?: grpcWeb.Metadata
@@ -22,6 +29,11 @@ export class BooksPromiseClient {
   constructor (hostname: string,
                credentials?: null | { [index: string]: string; },
                options?: null | { [index: string]: string; });
+
+  add(
+    request: Book,
+    metadata?: grpcWeb.Metadata
+  ): Promise<Book>;
 
   list(
     request: Book,

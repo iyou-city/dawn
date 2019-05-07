@@ -41,6 +41,7 @@ generate-js:
 	--js_out=import_style=commonjs:service/sdk/js \
 	--grpc-web_out=import_style=commonjs+dts,mode=grpcwebtext:service/sdk/js
 	cp -rf service/sdk/js/* ../client/src/sdk
+	cp -rf service/sdk/js/* ../web/src/sdk
 	@echo Generate-js successfully.
 
 build:#prepare generate-go
@@ -54,7 +55,7 @@ push:image
 
 run:image
 	-docker service rm $(SERVICE) > /dev/null 2>&1  || true	
-	@docker service create --name $(SERVICE) --network devel -p 9090:9090 $(IMG_HUB)/$(SERVICE):$(TAG)
+	@docker service create --name $(SERVICE) --network devel --mount type=bind,source=/home/daniel/uploads,destination=/uploads -p 9090:9090 $(IMG_HUB)/$(SERVICE):$(TAG)
 
 envoy:
 	docker build -t $(IMG_HUB)/envoy:$(TAG) -f envoy.Dockerfile .

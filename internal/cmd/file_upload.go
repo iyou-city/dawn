@@ -28,9 +28,13 @@ func fileUploadHandler(w http.ResponseWriter, r *http.Request) {
 			log.Fatal(err)
 		}
 		//创建上传目录
-		os.Mkdir("./upload", os.ModePerm)
+		r.ParseForm()
+		dir := "./uploads/" + r.FormValue("title")
+		os.Mkdir(dir, os.ModePerm)
+		//os.Mkdir("./upload", os.ModePerm)
 		//创建上传文件
-		cur, err := os.Create("./upload/" + files[i].Filename)
+		cur, err := os.Create(dir + "/" + files[i].Filename)
+		//cur, err := os.Create("./upload/" + files[i].Filename)
 		defer cur.Close()
 		if err != nil {
 			log.Fatal(err)
