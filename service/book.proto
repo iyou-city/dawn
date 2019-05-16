@@ -20,8 +20,9 @@ message Book {
   Media cover = 3;
   repeated Page page = 4;
   string reader = 5;
-  string count = 6;
-  string category = 7;
+  int32 amount = 6;
+  int32 level = 7;
+  string category = 8;
   map<string,string> labels = 9;
   google.protobuf.Timestamp created = 10;  
 }

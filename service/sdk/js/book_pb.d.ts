@@ -24,8 +24,11 @@ export class Book extends jspb.Message {
   getReader(): string;
   setReader(value: string): void;
 
-  getCount(): string;
-  setCount(value: string): void;
+  getAmount(): number;
+  setAmount(value: number): void;
+
+  getLevel(): number;
+  setLevel(value: number): void;
 
   getCategory(): string;
   setCategory(value: string): void;
@@ -53,7 +56,8 @@ export namespace Book {
     cover?: Media.AsObject,
     pageList: Array<Page.AsObject>,
     reader: string,
-    count: string,
+    amount: number,
+    level: number,
     category: string,
     labelsMap: Array<[string, string]>,
     created?: google_protobuf_timestamp_pb.Timestamp.AsObject,

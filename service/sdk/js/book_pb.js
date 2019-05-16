@@ -77,8 +77,9 @@ proto.dawn.Book.toObject = function(includeInstance, msg) {
     pageList: jspb.Message.toObjectList(msg.getPageList(),
     proto.dawn.Page.toObject, includeInstance),
     reader: jspb.Message.getFieldWithDefault(msg, 5, ""),
-    count: jspb.Message.getFieldWithDefault(msg, 6, ""),
-    category: jspb.Message.getFieldWithDefault(msg, 7, ""),
+    amount: jspb.Message.getFieldWithDefault(msg, 6, 0),
+    level: jspb.Message.getFieldWithDefault(msg, 7, 0),
+    category: jspb.Message.getFieldWithDefault(msg, 8, ""),
     labelsMap: (f = msg.getLabelsMap()) ? f.toObject(includeInstance, undefined) : [],
     created: (f = msg.getCreated()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f)
   };
@@ -140,10 +141,14 @@ proto.dawn.Book.deserializeBinaryFromReader = function(msg, reader) {
       msg.setReader(value);
       break;
     case 6:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setCount(value);
+      var value = /** @type {number} */ (reader.readInt32());
+      msg.setAmount(value);
       break;
     case 7:
+      var value = /** @type {number} */ (reader.readInt32());
+      msg.setLevel(value);
+      break;
+    case 8:
       var value = /** @type {string} */ (reader.readString());
       msg.setCategory(value);
       break;
@@ -224,17 +229,24 @@ proto.dawn.Book.serializeBinaryToWriter = function(message, writer) {
       f
     );
   }
-  f = message.getCount();
-  if (f.length > 0) {
-    writer.writeString(
+  f = message.getAmount();
+  if (f !== 0) {
+    writer.writeInt32(
       6,
+      f
+    );
+  }
+  f = message.getLevel();
+  if (f !== 0) {
+    writer.writeInt32(
+      7,
       f
     );
   }
   f = message.getCategory();
   if (f.length > 0) {
     writer.writeString(
-      7,
+      8,
       f
     );
   }
@@ -360,32 +372,47 @@ proto.dawn.Book.prototype.setReader = function(value) {
 
 
 /**
- * optional string count = 6;
- * @return {string}
+ * optional int32 amount = 6;
+ * @return {number}
  */
-proto.dawn.Book.prototype.getCount = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 6, ""));
+proto.dawn.Book.prototype.getAmount = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 6, 0));
 };
 
 
-/** @param {string} value */
-proto.dawn.Book.prototype.setCount = function(value) {
-  jspb.Message.setProto3StringField(this, 6, value);
+/** @param {number} value */
+proto.dawn.Book.prototype.setAmount = function(value) {
+  jspb.Message.setProto3IntField(this, 6, value);
 };
 
 
 /**
- * optional string category = 7;
+ * optional int32 level = 7;
+ * @return {number}
+ */
+proto.dawn.Book.prototype.getLevel = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 7, 0));
+};
+
+
+/** @param {number} value */
+proto.dawn.Book.prototype.setLevel = function(value) {
+  jspb.Message.setProto3IntField(this, 7, value);
+};
+
+
+/**
+ * optional string category = 8;
  * @return {string}
  */
 proto.dawn.Book.prototype.getCategory = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 7, ""));
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 8, ""));
 };
 
 
 /** @param {string} value */
 proto.dawn.Book.prototype.setCategory = function(value) {
-  jspb.Message.setProto3StringField(this, 7, value);
+  jspb.Message.setProto3StringField(this, 8, value);
 };
 
 
