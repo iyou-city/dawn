@@ -4,8 +4,8 @@ import (
 	"context"
 
 	"github.com/gogo/protobuf/types"
-	"github.com/iyou/dawn/internal/impl/biz"
-	pb "github.com/iyou/dawn/service/sdk/go"
+	"github.com/iyou.city/dawn/internal/impl/biz"
+	pb "github.com/iyou.city/dawn/service/sdk/go"
 )
 
 const (

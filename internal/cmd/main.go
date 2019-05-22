@@ -3,8 +3,8 @@ package main
 import (
 	"net"
 
-	impl "github.com/iyou/dawn/internal/impl/service"
-	pb "github.com/iyou/dawn/service/sdk/go"
+	impl "github.com/iyou.city/dawn/internal/impl/service"
+	pb "github.com/iyou.city/dawn/service/sdk/go"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/grpclog"
 )

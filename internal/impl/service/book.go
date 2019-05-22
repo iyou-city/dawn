@@ -2,10 +2,12 @@ package service
 
 import (
 	"context"
+	"os"
 
 	"github.com/gogo/protobuf/types"
-	"github.com/iyou/dawn/internal/impl/biz"
-	pb "github.com/iyou/dawn/service/sdk/go"
+	"github.com/iyou.city/dawn/internal/impl/biz"
+	pb "github.com/iyou.city/dawn/service/sdk/go"
+	"google.golang.org/grpc/grpclog"
 )
 
 const (
@@ -61,6 +63,9 @@ func (s *BooksImpl) List(in *pb.Book, stream pb.Books_ListServer) error {
 func (s *BooksImpl) Delete(ctx context.Context, in *pb.Book) (*types.Empty, error) {
 	if err := biz.Delete(bookTable, in.Id); err != nil {
 		return nil, err
+	}
+	if err := os.RemoveAll("/uploads/" + in.Title); err != nil {
+		grpclog.Errorln(err)
 	}
 	return &types.Empty{}, nil
 }

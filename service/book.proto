@@ -11,7 +11,7 @@ service Books {
   // rpc Get(Article) returns (Article) {}
   // rpc Update(Article) returns (Article) {}
   rpc List(Book) returns (stream Book) {}
-  // rpc Delete(Article) returns (google.protobuf.Empty) {}
+  rpc Delete(Book) returns (google.protobuf.Empty) {}
 }
 
 message Book {

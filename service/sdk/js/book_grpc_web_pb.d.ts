@@ -23,6 +23,13 @@ export class BooksClient {
     metadata?: grpcWeb.Metadata
   ): grpcWeb.ClientReadableStream<Book>;
 
+  delete(
+    request: Book,
+    metadata: grpcWeb.Metadata | undefined,
+    callback: (err: grpcWeb.Error,
+               response: google_protobuf_empty_pb.Empty) => void
+  ): grpcWeb.ClientReadableStream<google_protobuf_empty_pb.Empty>;
+
 }
 
 export class BooksPromiseClient {
@@ -39,6 +46,11 @@ export class BooksPromiseClient {
     request: Book,
     metadata?: grpcWeb.Metadata
   ): grpcWeb.ClientReadableStream<Book>;
+
+  delete(
+    request: Book,
+    metadata?: grpcWeb.Metadata
+  ): Promise<google_protobuf_empty_pb.Empty>;
 
 }
 

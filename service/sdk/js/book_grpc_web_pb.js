@@ -197,5 +197,60 @@ proto.dawn.BooksPromiseClient.prototype.list =
 };
 
 
+/**
+ * @const
+ * @type {!grpc.web.AbstractClientBase.MethodInfo<
+ *   !proto.dawn.Book,
+ *   !proto.google.protobuf.Empty>}
+ */
+const methodInfo_Books_Delete = new grpc.web.AbstractClientBase.MethodInfo(
+  google_protobuf_empty_pb.Empty,
+  /** @param {!proto.dawn.Book} request */
+  function(request) {
+    return request.serializeBinary();
+  },
+  google_protobuf_empty_pb.Empty.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.dawn.Book} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.Error, ?proto.google.protobuf.Empty)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.google.protobuf.Empty>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.dawn.BooksClient.prototype.delete =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/dawn.Books/Delete',
+      request,
+      metadata || {},
+      methodInfo_Books_Delete,
+      callback);
+};
+
+
+/**
+ * @param {!proto.dawn.Book} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.google.protobuf.Empty>}
+ *     A native promise that resolves to the response
+ */
+proto.dawn.BooksPromiseClient.prototype.delete =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/dawn.Books/Delete',
+      request,
+      metadata || {},
+      methodInfo_Books_Delete);
+};
+
+
 module.exports = proto.dawn;
 
