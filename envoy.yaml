@@ -24,10 +24,6 @@ static_resources:
                 route:
                   cluster: dawn_service
                   max_grpc_timeout: 0s
-                  retry_policy: {
-                    retry_on: "5xx",
-                    num_retries: 3
-                  }
               cors:
                 allow_origin:
                 - "*"
