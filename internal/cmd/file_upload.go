@@ -9,12 +9,11 @@ import (
 )
 
 func serveFileUpload() {
-	http.HandleFunc("/", fileUploadHandler)
+	http.HandleFunc("/upload", fileUploadHandler)
 	http.ListenAndServe(":9090", nil)
 }
 
 func fileUploadHandler(w http.ResponseWriter, r *http.Request) {
-	enableCors(&w)
 	//设置内存大小
 	r.ParseMultipartForm(32 << 20)
 	//获取上传的文件组
@@ -44,8 +43,4 @@ func fileUploadHandler(w http.ResponseWriter, r *http.Request) {
 		//输出上传的文件名 }
 		fmt.Fprintf(w, "success!\n") //这个写入到w的是输出到客户端的
 	}
-}
-
-func enableCors(w *http.ResponseWriter) {
-	(*w).Header().Set("Access-Control-Allow-Origin", "*")
 }

@@ -20,6 +20,9 @@ static_resources:
             - name: local_service
               domains: ["*"]
               routes:
+              - match: { prefix: "/upload" }
+                route:
+                  cluster: upload_service
               - match: { prefix: "/" }
                 route:
                   cluster: dawn_service
@@ -46,3 +49,11 @@ static_resources:
     - socket_address:
         address: dawn
         port_value: 50051
+  - name: upload_service
+    connect_timeout: 10s
+    type: logical_dns
+    lb_policy: round_robin
+    hosts:
+    - socket_address:
+        address: dawn
+        port_value: 9090
