@@ -34,7 +34,7 @@ func fileUploadHandler(w http.ResponseWriter, r *http.Request) {
 		}
 		//创建上传目录
 		r.ParseForm()
-		dir := fileDir + r.FormValue("title")
+		dir := fileDir +"/"+ r.FormValue("title")
 		os.Mkdir(dir, os.ModePerm)
 		//os.Mkdir("./upload", os.ModePerm)
 		//创建上传文件
