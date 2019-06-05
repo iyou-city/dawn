@@ -55,12 +55,12 @@ push:image
 
 run:image
 	-docker service rm $(SERVICE) > /dev/null 2>&1  || true	
-	@docker service create --name $(SERVICE) --network devel --mount type=bind,source=/home/daniel/uploads,destination=/uploads $(IMG_HUB)/$(SERVICE):$(TAG)
+	@docker service create --name $(SERVICE) --network devel -p 9090:9090 --mount type=bind,source=/home/daniel/uploads,destination=/uploads $(IMG_HUB)/$(SERVICE):$(TAG)
 
 envoy:
 	docker build -t $(IMG_HUB)/envoy:$(TAG) -f envoy.Dockerfile .
 #	docker push $(IMG_HUB)/envoy:$(TAG)
-	docker service create --name envoy --network devel -p 8080:8080 $(IMG_HUB)/envoy:$(TAG)
+	docker service create --name envoy --network devel -p 80:80 $(IMG_HUB)/envoy:$(TAG)
 
 mysql:
 	-docker service create --name mysql --network devel --mount type=bind,source=/home/daniel/.mysqldata,destination=/var/lib/mysql -e MYSQL_ROOT_PASSWORD=123456 -e MYSQL_DATABASE=iyou mysql:5.7.24

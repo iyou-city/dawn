@@ -8,7 +8,13 @@ import (
 	"os"
 )
 
+const (
+	fileDir = "/uploads"
+)
+
 func serveFileUpload() {
+	fs := http.FileServer(http.Dir(fileDir))
+	http.Handle("/static/", http.StripPrefix("/static/", fs))
 	http.HandleFunc("/upload", fileUploadHandler)
 	http.ListenAndServe(":9090", nil)
 }
@@ -28,7 +34,7 @@ func fileUploadHandler(w http.ResponseWriter, r *http.Request) {
 		}
 		//创建上传目录
 		r.ParseForm()
-		dir := "./uploads/" + r.FormValue("title")
+		dir := fileDir + r.FormValue("title")
 		os.Mkdir(dir, os.ModePerm)
 		//os.Mkdir("./upload", os.ModePerm)
 		//创建上传文件
