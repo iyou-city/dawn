@@ -55,7 +55,7 @@ push:image
 
 run:image
 	-docker service rm $(SERVICE) > /dev/null 2>&1  || true	
-	@docker service create --name $(SERVICE) --network devel -p 9090:9090 --mount type=bind,source=/home/daniel/uploads,destination=/uploads $(IMG_HUB)/$(SERVICE):$(TAG)
+	@docker service create --name $(SERVICE) --network devel --mount type=bind,source=/home/daniel/uploads,destination=/uploads $(IMG_HUB)/$(SERVICE):$(TAG)
 
 envoy:
 	docker build -t $(IMG_HUB)/envoy:$(TAG) -f envoy.Dockerfile .
