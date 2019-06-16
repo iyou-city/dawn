@@ -8,6 +8,7 @@ import (
 	"github.com/iyou.city/dawn/internal/impl/biz"
 	pb "github.com/iyou.city/dawn/service/sdk/go"
 	"google.golang.org/grpc/grpclog"
+	log "google.golang.org/grpc/grpclog"
 )
 
 const (
@@ -48,6 +49,7 @@ func (s *BooksImpl) Update(ctx context.Context, in *pb.Book) (*pb.Book, error) {
 func (s *BooksImpl) List(in *pb.Book, stream pb.Books_ListServer) error {
 	books := []*pb.Book{}
 	if err := biz.List(bookTable, &books, " order by data->'$.created.seconds' desc"); err != nil {
+		log.Errorln(err)
 		return err
 	}
 

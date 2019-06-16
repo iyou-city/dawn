@@ -2,11 +2,10 @@ package service
 
 import (
 	"context"
-	"fmt"
 
 	"github.com/gogo/protobuf/types"
 	pb "github.com/iyou.city/dawn/service/sdk/go"
-	"google.golang.org/grpc/grpclog"
+	log "google.golang.org/grpc/grpclog"
 )
 
 var (
@@ -20,7 +19,7 @@ func (s *MessageImpl) Send(ctx context.Context, in *pb.Message) (*types.Empty, e
 	if p2pQueues[in.To] == nil {
 		p2pQueues[in.To] = make(chan *pb.Message, 100)
 	}
-	fmt.Println("rec:", *in)
+	log.Println("rec:", *in)
 	go func() {
 		p2pQueues[in.To] <- in
 	}()
@@ -34,11 +33,9 @@ func (s *MessageImpl) Receive(in *pb.User, stream pb.Messages_ReceiveServer) err
 	}
 
 	for msg := range p2pQueues[in.Id] {
-		fmt.Println("send", msg)
+		log.Println("send", msg)
 		if err := stream.Send(msg); err != nil {
-			grpclog.Errorln(err)
-			p2pQueues[in.Id] <- msg
-			//return err
+			log.Errorln(err)
 		}
 	}
 
@@ -68,8 +65,7 @@ func (s *MessageImpl) Subscribe(in *pb.Topic, stream pb.Messages_SubscribeServer
 	pubsubQueues[in.GroupId] = append(pubsubQueues[in.GroupId], queue)
 	for topic := range queue {
 		if err := stream.Send(topic); err != nil {
-			grpclog.Errorln(err)
-			queue <- topic
+			log.Errorln(err)
 		}
 	}
 

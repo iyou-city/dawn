@@ -6,7 +6,6 @@ import (
 	"fmt"
 	"log"
 	"reflect"
-
 	"strings"
 	"time"
 
@@ -24,15 +23,14 @@ func init() {
 	for i := 1; i <= 5; i++ {
 		DB, err = sql.Open("mysql", dburl)
 		if err != nil {
-			//log.Fatalf("Connect %s failed: %s; on...: %v", dburl, err, i)
+			log.Println("Connect failed: ", dburl, err, i)
 			time.Sleep(time.Second * 5)
 			continue
 		} else {
 			break
 		}
 	}
-	log.Println("DB init successfully: ", dburl)
-	//[workaround]http://rdpm.intra.sina.com.cn/sinaclouds/forum/issues/55
+	log.Println("DB init completely: ", dburl)
 	DB.SetMaxIdleConns(0)
 }
 
