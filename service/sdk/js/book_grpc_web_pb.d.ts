@@ -8,8 +8,8 @@ import {Book} from './book_pb';
 
 export class BooksClient {
   constructor (hostname: string,
-               credentials?: null | { [index: string]: string; },
-               options?: null | { [index: string]: string; });
+               credentials: null | { [index: string]: string; },
+               options: null | { [index: string]: string; });
 
   add(
     request: Book,
@@ -34,8 +34,8 @@ export class BooksClient {
 
 export class BooksPromiseClient {
   constructor (hostname: string,
-               credentials?: null | { [index: string]: string; },
-               options?: null | { [index: string]: string; });
+               credentials: null | { [index: string]: string; },
+               options: null | { [index: string]: string; });
 
   add(
     request: Book,

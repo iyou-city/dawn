@@ -4,31 +4,24 @@ import * as google_protobuf_empty_pb from 'google-protobuf/google/protobuf/empty
 import * as google_protobuf_timestamp_pb from 'google-protobuf/google/protobuf/timestamp_pb';
 
 export class User extends jspb.Message {
-  getId(): string;
-  setId(value: string): void;
+  id: string;
 
-  getName(): string;
-  setName(value: string): void;
+  name: string;
 
-  getPassword(): string;
-  setPassword(value: string): void;
+  password: string;
 
-  getTelephone(): string;
-  setTelephone(value: string): void;
+  telephone: string;
 
-  getIcon(): string;
-  setIcon(value: string): void;
+  icon: string;
 
-  getSignature(): string;
-  setSignature(value: string): void;
+  signature: string;
 
-  getLabelsMap(): jspb.Map<string, string>;
-  clearLabelsMap(): void;
+  labelsMap: jspb.Map<string, string>;
+  clearlabelsMap(): void;
 
-  getCreated(): google_protobuf_timestamp_pb.Timestamp | undefined;
-  setCreated(value?: google_protobuf_timestamp_pb.Timestamp): void;
-  hasCreated(): boolean;
-  clearCreated(): void;
+  created: google_protobuf_timestamp_pb.Timestamp | undefined;
+  hascreated(): boolean;
+  clearcreated(): void;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): User.AsObject;

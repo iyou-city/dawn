@@ -5,35 +5,28 @@ import * as google_protobuf_empty_pb from 'google-protobuf/google/protobuf/empty
 import * as google_protobuf_timestamp_pb from 'google-protobuf/google/protobuf/timestamp_pb';
 
 export class Message extends jspb.Message {
-  getId(): string;
-  setId(value: string): void;
+  id: string;
 
-  getContent(): string;
-  setContent(value: string): void;
+  content: string;
 
-  getImagesList(): Array<string>;
-  setImagesList(value: Array<string>): void;
-  clearImagesList(): void;
+  imagesList: Array<string>;
+  clearimagesList(): void;
   addImages(value: string, index?: number): void;
 
-  getVideosList(): Array<string>;
-  setVideosList(value: Array<string>): void;
-  clearVideosList(): void;
+  videosList: Array<string>;
+  clearvideosList(): void;
   addVideos(value: string, index?: number): void;
 
-  getTo(): string;
-  setTo(value: string): void;
+  to: string;
 
-  getFrom(): string;
-  setFrom(value: string): void;
+  from: string;
 
-  getLabelsMap(): jspb.Map<string, string>;
-  clearLabelsMap(): void;
+  labelsMap: jspb.Map<string, string>;
+  clearlabelsMap(): void;
 
-  getCreated(): google_protobuf_timestamp_pb.Timestamp | undefined;
-  setCreated(value?: google_protobuf_timestamp_pb.Timestamp): void;
-  hasCreated(): boolean;
-  clearCreated(): void;
+  created: google_protobuf_timestamp_pb.Timestamp | undefined;
+  hascreated(): boolean;
+  clearcreated(): void;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): Message.AsObject;
@@ -57,13 +50,11 @@ export namespace Message {
 }
 
 export class Topic extends jspb.Message {
-  getGroupid(): string;
-  setGroupid(value: string): void;
+  groupId: string;
 
-  getMessage(): Message | undefined;
-  setMessage(value?: Message): void;
-  hasMessage(): boolean;
-  clearMessage(): void;
+  message: Message | undefined;
+  hasmessage(): boolean;
+  clearmessage(): void;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): Topic.AsObject;

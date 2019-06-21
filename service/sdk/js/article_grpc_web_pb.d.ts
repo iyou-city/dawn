@@ -8,8 +8,8 @@ import {Article} from './article_pb';
 
 export class ArticlesClient {
   constructor (hostname: string,
-               credentials?: null | { [index: string]: string; },
-               options?: null | { [index: string]: string; });
+               credentials: null | { [index: string]: string; },
+               options: null | { [index: string]: string; });
 
   add(
     request: Article,
@@ -48,8 +48,8 @@ export class ArticlesClient {
 
 export class ArticlesPromiseClient {
   constructor (hostname: string,
-               credentials?: null | { [index: string]: string; },
-               options?: null | { [index: string]: string; });
+               credentials: null | { [index: string]: string; },
+               options: null | { [index: string]: string; });
 
   add(
     request: Article,

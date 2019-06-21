@@ -7,8 +7,8 @@ import {Group} from './group_pb';
 
 export class GroupsClient {
   constructor (hostname: string,
-               credentials?: null | { [index: string]: string; },
-               options?: null | { [index: string]: string; });
+               credentials: null | { [index: string]: string; },
+               options: null | { [index: string]: string; });
 
   add(
     request: Group,
@@ -47,8 +47,8 @@ export class GroupsClient {
 
 export class GroupsPromiseClient {
   constructor (hostname: string,
-               credentials?: null | { [index: string]: string; },
-               options?: null | { [index: string]: string; });
+               credentials: null | { [index: string]: string; },
+               options: null | { [index: string]: string; });
 
   add(
     request: Group,

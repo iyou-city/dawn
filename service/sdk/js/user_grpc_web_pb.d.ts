@@ -7,8 +7,8 @@ import {User} from './user_pb';
 
 export class UsersClient {
   constructor (hostname: string,
-               credentials?: null | { [index: string]: string; },
-               options?: null | { [index: string]: string; });
+               credentials: null | { [index: string]: string; },
+               options: null | { [index: string]: string; });
 
   add(
     request: User,
@@ -54,8 +54,8 @@ export class UsersClient {
 
 export class UsersPromiseClient {
   constructor (hostname: string,
-               credentials?: null | { [index: string]: string; },
-               options?: null | { [index: string]: string; });
+               credentials: null | { [index: string]: string; },
+               options: null | { [index: string]: string; });
 
   add(
     request: User,
