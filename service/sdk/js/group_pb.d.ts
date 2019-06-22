@@ -5,24 +5,17 @@ import * as google_protobuf_timestamp_pb from 'google-protobuf/google/protobuf/t
 
 export class Group extends jspb.Message {
   id: string;
-
   name: string;
-
   description: string;
-
   icon: string;
-
   membersList: Array<string>;
   clearmembersList(): void;
   addMembers(value: string, index?: number): void;
-
   labelsMap: jspb.Map<string, string>;
   clearlabelsMap(): void;
-
   created: google_protobuf_timestamp_pb.Timestamp | undefined;
   hascreated(): boolean;
   clearcreated(): void;
-
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): Group.AsObject;
   static toObject(includeInstance: boolean, msg: Group): Group.AsObject;

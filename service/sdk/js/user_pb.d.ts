@@ -5,24 +5,16 @@ import * as google_protobuf_timestamp_pb from 'google-protobuf/google/protobuf/t
 
 export class User extends jspb.Message {
   id: string;
-
   name: string;
-
   password: string;
-
   telephone: string;
-
   icon: string;
-
   signature: string;
-
   labelsMap: jspb.Map<string, string>;
   clearlabelsMap(): void;
-
   created: google_protobuf_timestamp_pb.Timestamp | undefined;
   hascreated(): boolean;
   clearcreated(): void;
-
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): User.AsObject;
   static toObject(includeInstance: boolean, msg: User): User.AsObject;

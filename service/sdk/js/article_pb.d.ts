@@ -6,36 +6,26 @@ import * as google_protobuf_timestamp_pb from 'google-protobuf/google/protobuf/t
 
 export class Article extends jspb.Message {
   id: string;
-
   title: string;
-
   content: string;
-
   imagesList: Array<string>;
   clearimagesList(): void;
   addImages(value: string, index?: number): void;
-
   videosList: Array<string>;
   clearvideosList(): void;
   addVideos(value: string, index?: number): void;
-
   owner: string;
-
   location: Location | undefined;
   haslocation(): boolean;
   clearlocation(): void;
-
   accessesList: Array<number>;
   clearaccessesList(): void;
   addAccesses(value: number, index?: number): void;
-
   labelsMap: jspb.Map<string, string>;
   clearlabelsMap(): void;
-
   created: google_protobuf_timestamp_pb.Timestamp | undefined;
   hascreated(): boolean;
   clearcreated(): void;
-
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): Article.AsObject;
   static toObject(includeInstance: boolean, msg: Article): Article.AsObject;
@@ -61,11 +51,8 @@ export namespace Article {
 
 export class Location extends jspb.Message {
   latitude: number;
-
   longitude: number;
-
   name: string;
-
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): Location.AsObject;
   static toObject(includeInstance: boolean, msg: Location): Location.AsObject;
