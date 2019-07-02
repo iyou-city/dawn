@@ -5,7 +5,7 @@ import (
 
 	"github.com/gogo/protobuf/types"
 	"github.com/iyou.city/dawn/internal/impl/biz"
-	pb "github.com/iyou.city/dawn/api/go"
+	pb "github.com/iyou.city/dawn/service/go"
 )
 
 const (

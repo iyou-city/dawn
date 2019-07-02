@@ -4,7 +4,7 @@ import (
 	"context"
 
 	"github.com/gogo/protobuf/types"
-	pb "github.com/iyou.city/dawn/api/go"
+	pb "github.com/iyou.city/dawn/service/go"
 	log "google.golang.org/grpc/grpclog"
 )
 

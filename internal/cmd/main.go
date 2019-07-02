@@ -4,7 +4,7 @@ import (
 	"net"
 
 	impl "github.com/iyou.city/dawn/internal/impl/service"
-	pb "github.com/iyou.city/dawn/api/go"
+	pb "github.com/iyou.city/dawn/service/go"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/grpclog"
 )
