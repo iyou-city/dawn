@@ -6,7 +6,7 @@ import (
 
 	"github.com/gogo/protobuf/types"
 	"github.com/iyou.city/dawn/internal/impl/biz"
-	pb "github.com/iyou.city/dawn/service/sdk/go"
+	pb "github.com/iyou.city/dawn/api/go"
 	"google.golang.org/grpc/grpclog"
 	log "google.golang.org/grpc/grpclog"
 )
