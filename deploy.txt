@@ -1,0 +1,12 @@
+docker network create --driver=overlay devel
+
+
+docker service create --name mysql --network devel --mount type=bind,source=/root/.mysqldata,destination=/var/lib/mysql -e MYSQL_ROOT_PASSWORD=123456 -e MYSQL_DATABASE=iyou mysql:5.7.24
+
+docker service create --name dawn --network devel --mount type=bind,source=/root/uploads,destination=/uploads jmzwcn/dawn:20190616-2036
+
+docker service create --name envoy --network devel -p 80:80 jmzwcn/envoy:20190611-2329
+
+docker service create --name web --network devel jmzwcn/web:20190616-2155
+
+
