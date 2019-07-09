@@ -1,4 +1,3 @@
-// source: book.proto
 /**
  * @fileoverview
  * @enhanceable
@@ -317,6 +316,16 @@ proto.dawn.Book.serializeBinaryToWriter = function(message, writer) {
 };
 
 
+Object.defineProperty(proto.dawn.Book.prototype, "id", {
+  set: function(value) {
+    this.setId(value);
+  },
+  get: function() {
+    return this.getId();
+  },
+});
+
+
 /**
  * optional string id = 1;
  * @return {string}
@@ -332,6 +341,16 @@ proto.dawn.Book.prototype.setId = function(value) {
 };
 
 
+Object.defineProperty(proto.dawn.Book.prototype, "title", {
+  set: function(value) {
+    this.setTitle(value);
+  },
+  get: function() {
+    return this.getTitle();
+  },
+});
+
+
 /**
  * optional string title = 2;
  * @return {string}
@@ -345,6 +364,16 @@ proto.dawn.Book.prototype.getTitle = function() {
 proto.dawn.Book.prototype.setTitle = function(value) {
   jspb.Message.setProto3StringField(this, 2, value);
 };
+
+
+Object.defineProperty(proto.dawn.Book.prototype, "cover", {
+  set: function(value) {
+    this.setCover(value);
+  },
+  get: function() {
+    return this.getCover();
+  },
+});
 
 
 /**
@@ -378,6 +407,16 @@ proto.dawn.Book.prototype.clearCover = function() {
 proto.dawn.Book.prototype.hasCover = function() {
   return jspb.Message.getField(this, 3) != null;
 };
+
+
+Object.defineProperty(proto.dawn.Book.prototype, "pageList", {
+  set: function(value) {
+    this.setPageList(value);
+  },
+  get: function() {
+    return this.getPageList();
+  },
+});
 
 
 /**
@@ -414,6 +453,16 @@ proto.dawn.Book.prototype.clearPageList = function() {
 };
 
 
+Object.defineProperty(proto.dawn.Book.prototype, "reader", {
+  set: function(value) {
+    this.setReader(value);
+  },
+  get: function() {
+    return this.getReader();
+  },
+});
+
+
 /**
  * optional string reader = 5;
  * @return {string}
@@ -427,6 +476,16 @@ proto.dawn.Book.prototype.getReader = function() {
 proto.dawn.Book.prototype.setReader = function(value) {
   jspb.Message.setProto3StringField(this, 5, value);
 };
+
+
+Object.defineProperty(proto.dawn.Book.prototype, "amount", {
+  set: function(value) {
+    this.setAmount(value);
+  },
+  get: function() {
+    return this.getAmount();
+  },
+});
 
 
 /**
@@ -444,6 +503,16 @@ proto.dawn.Book.prototype.setAmount = function(value) {
 };
 
 
+Object.defineProperty(proto.dawn.Book.prototype, "level", {
+  set: function(value) {
+    this.setLevel(value);
+  },
+  get: function() {
+    return this.getLevel();
+  },
+});
+
+
 /**
  * optional int32 level = 7;
  * @return {number}
@@ -459,6 +528,16 @@ proto.dawn.Book.prototype.setLevel = function(value) {
 };
 
 
+Object.defineProperty(proto.dawn.Book.prototype, "category", {
+  set: function(value) {
+    this.setCategory(value);
+  },
+  get: function() {
+    return this.getCategory();
+  },
+});
+
+
 /**
  * optional string category = 8;
  * @return {string}
@@ -472,6 +551,16 @@ proto.dawn.Book.prototype.getCategory = function() {
 proto.dawn.Book.prototype.setCategory = function(value) {
   jspb.Message.setProto3StringField(this, 8, value);
 };
+
+
+Object.defineProperty(proto.dawn.Book.prototype, "labelsMap", {
+  set: function(value) {
+    this.setLabelsMap(value);
+  },
+  get: function() {
+    return this.getLabelsMap();
+  },
+});
 
 
 /**
@@ -493,6 +582,16 @@ proto.dawn.Book.prototype.getLabelsMap = function(opt_noLazyCreate) {
 proto.dawn.Book.prototype.clearLabelsMap = function() {
   this.getLabelsMap().clear();
 };
+
+
+Object.defineProperty(proto.dawn.Book.prototype, "created", {
+  set: function(value) {
+    this.setCreated(value);
+  },
+  get: function() {
+    return this.getCreated();
+  },
+});
 
 
 /**
@@ -668,6 +767,16 @@ proto.dawn.Page.serializeBinaryToWriter = function(message, writer) {
 };
 
 
+Object.defineProperty(proto.dawn.Page.prototype, "name", {
+  set: function(value) {
+    this.setName(value);
+  },
+  get: function() {
+    return this.getName();
+  },
+});
+
+
 /**
  * optional string name = 1;
  * @return {string}
@@ -681,6 +790,16 @@ proto.dawn.Page.prototype.getName = function() {
 proto.dawn.Page.prototype.setName = function(value) {
   jspb.Message.setProto3StringField(this, 1, value);
 };
+
+
+Object.defineProperty(proto.dawn.Page.prototype, "picture", {
+  set: function(value) {
+    this.setPicture(value);
+  },
+  get: function() {
+    return this.getPicture();
+  },
+});
 
 
 /**
@@ -714,6 +833,16 @@ proto.dawn.Page.prototype.clearPicture = function() {
 proto.dawn.Page.prototype.hasPicture = function() {
   return jspb.Message.getField(this, 2) != null;
 };
+
+
+Object.defineProperty(proto.dawn.Page.prototype, "sound", {
+  set: function(value) {
+    this.setSound(value);
+  },
+  get: function() {
+    return this.getSound();
+  },
+});
 
 
 /**
@@ -859,6 +988,16 @@ proto.dawn.Media.serializeBinaryToWriter = function(message, writer) {
     );
   }
 };
+
+
+Object.defineProperty(proto.dawn.Media.prototype, "url", {
+  set: function(value) {
+    this.setUrl(value);
+  },
+  get: function() {
+    return this.getUrl();
+  },
+});
 
 
 /**

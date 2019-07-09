@@ -1,4 +1,3 @@
-// source: message.proto
 /**
  * @fileoverview
  * @enhanceable
@@ -266,6 +265,16 @@ proto.dawn.Message.serializeBinaryToWriter = function(message, writer) {
 };
 
 
+Object.defineProperty(proto.dawn.Message.prototype, "id", {
+  set: function(value) {
+    this.setId(value);
+  },
+  get: function() {
+    return this.getId();
+  },
+});
+
+
 /**
  * optional string id = 1;
  * @return {string}
@@ -281,6 +290,16 @@ proto.dawn.Message.prototype.setId = function(value) {
 };
 
 
+Object.defineProperty(proto.dawn.Message.prototype, "content", {
+  set: function(value) {
+    this.setContent(value);
+  },
+  get: function() {
+    return this.getContent();
+  },
+});
+
+
 /**
  * optional string content = 2;
  * @return {string}
@@ -294,6 +313,16 @@ proto.dawn.Message.prototype.getContent = function() {
 proto.dawn.Message.prototype.setContent = function(value) {
   jspb.Message.setProto3StringField(this, 2, value);
 };
+
+
+Object.defineProperty(proto.dawn.Message.prototype, "imagesList", {
+  set: function(value) {
+    this.setImagesList(value);
+  },
+  get: function() {
+    return this.getImagesList();
+  },
+});
 
 
 /**
@@ -328,6 +357,16 @@ proto.dawn.Message.prototype.clearImagesList = function() {
 };
 
 
+Object.defineProperty(proto.dawn.Message.prototype, "videosList", {
+  set: function(value) {
+    this.setVideosList(value);
+  },
+  get: function() {
+    return this.getVideosList();
+  },
+});
+
+
 /**
  * repeated string videos = 4;
  * @return {!Array<string>}
@@ -360,6 +399,16 @@ proto.dawn.Message.prototype.clearVideosList = function() {
 };
 
 
+Object.defineProperty(proto.dawn.Message.prototype, "to", {
+  set: function(value) {
+    this.setTo(value);
+  },
+  get: function() {
+    return this.getTo();
+  },
+});
+
+
 /**
  * optional string to = 5;
  * @return {string}
@@ -375,6 +424,16 @@ proto.dawn.Message.prototype.setTo = function(value) {
 };
 
 
+Object.defineProperty(proto.dawn.Message.prototype, "from", {
+  set: function(value) {
+    this.setFrom(value);
+  },
+  get: function() {
+    return this.getFrom();
+  },
+});
+
+
 /**
  * optional string from = 6;
  * @return {string}
@@ -388,6 +447,16 @@ proto.dawn.Message.prototype.getFrom = function() {
 proto.dawn.Message.prototype.setFrom = function(value) {
   jspb.Message.setProto3StringField(this, 6, value);
 };
+
+
+Object.defineProperty(proto.dawn.Message.prototype, "labelsMap", {
+  set: function(value) {
+    this.setLabelsMap(value);
+  },
+  get: function() {
+    return this.getLabelsMap();
+  },
+});
 
 
 /**
@@ -409,6 +478,16 @@ proto.dawn.Message.prototype.getLabelsMap = function(opt_noLazyCreate) {
 proto.dawn.Message.prototype.clearLabelsMap = function() {
   this.getLabelsMap().clear();
 };
+
+
+Object.defineProperty(proto.dawn.Message.prototype, "created", {
+  set: function(value) {
+    this.setCreated(value);
+  },
+  get: function() {
+    return this.getCreated();
+  },
+});
 
 
 /**
@@ -570,6 +649,16 @@ proto.dawn.Topic.serializeBinaryToWriter = function(message, writer) {
 };
 
 
+Object.defineProperty(proto.dawn.Topic.prototype, "groupId", {
+  set: function(value) {
+    this.setGroupId(value);
+  },
+  get: function() {
+    return this.getGroupId();
+  },
+});
+
+
 /**
  * optional string groupId = 1;
  * @return {string}
@@ -583,6 +672,16 @@ proto.dawn.Topic.prototype.getGroupId = function() {
 proto.dawn.Topic.prototype.setGroupId = function(value) {
   jspb.Message.setProto3StringField(this, 1, value);
 };
+
+
+Object.defineProperty(proto.dawn.Topic.prototype, "message", {
+  set: function(value) {
+    this.setMessage(value);
+  },
+  get: function() {
+    return this.getMessage();
+  },
+});
 
 
 /**

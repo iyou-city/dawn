@@ -1,4 +1,3 @@
-// source: article.proto
 /**
  * @fileoverview
  * @enhanceable
@@ -292,6 +291,16 @@ proto.dawn.Article.serializeBinaryToWriter = function(message, writer) {
 };
 
 
+Object.defineProperty(proto.dawn.Article.prototype, "id", {
+  set: function(value) {
+    this.setId(value);
+  },
+  get: function() {
+    return this.getId();
+  },
+});
+
+
 /**
  * optional string id = 1;
  * @return {string}
@@ -305,6 +314,16 @@ proto.dawn.Article.prototype.getId = function() {
 proto.dawn.Article.prototype.setId = function(value) {
   jspb.Message.setProto3StringField(this, 1, value);
 };
+
+
+Object.defineProperty(proto.dawn.Article.prototype, "title", {
+  set: function(value) {
+    this.setTitle(value);
+  },
+  get: function() {
+    return this.getTitle();
+  },
+});
 
 
 /**
@@ -322,6 +341,16 @@ proto.dawn.Article.prototype.setTitle = function(value) {
 };
 
 
+Object.defineProperty(proto.dawn.Article.prototype, "content", {
+  set: function(value) {
+    this.setContent(value);
+  },
+  get: function() {
+    return this.getContent();
+  },
+});
+
+
 /**
  * optional string content = 3;
  * @return {string}
@@ -335,6 +364,16 @@ proto.dawn.Article.prototype.getContent = function() {
 proto.dawn.Article.prototype.setContent = function(value) {
   jspb.Message.setProto3StringField(this, 3, value);
 };
+
+
+Object.defineProperty(proto.dawn.Article.prototype, "imagesList", {
+  set: function(value) {
+    this.setImagesList(value);
+  },
+  get: function() {
+    return this.getImagesList();
+  },
+});
 
 
 /**
@@ -369,6 +408,16 @@ proto.dawn.Article.prototype.clearImagesList = function() {
 };
 
 
+Object.defineProperty(proto.dawn.Article.prototype, "videosList", {
+  set: function(value) {
+    this.setVideosList(value);
+  },
+  get: function() {
+    return this.getVideosList();
+  },
+});
+
+
 /**
  * repeated string videos = 5;
  * @return {!Array<string>}
@@ -401,6 +450,16 @@ proto.dawn.Article.prototype.clearVideosList = function() {
 };
 
 
+Object.defineProperty(proto.dawn.Article.prototype, "owner", {
+  set: function(value) {
+    this.setOwner(value);
+  },
+  get: function() {
+    return this.getOwner();
+  },
+});
+
+
 /**
  * optional string owner = 6;
  * @return {string}
@@ -414,6 +473,16 @@ proto.dawn.Article.prototype.getOwner = function() {
 proto.dawn.Article.prototype.setOwner = function(value) {
   jspb.Message.setProto3StringField(this, 6, value);
 };
+
+
+Object.defineProperty(proto.dawn.Article.prototype, "location", {
+  set: function(value) {
+    this.setLocation(value);
+  },
+  get: function() {
+    return this.getLocation();
+  },
+});
 
 
 /**
@@ -449,6 +518,16 @@ proto.dawn.Article.prototype.hasLocation = function() {
 };
 
 
+Object.defineProperty(proto.dawn.Article.prototype, "accessesList", {
+  set: function(value) {
+    this.setAccessesList(value);
+  },
+  get: function() {
+    return this.getAccessesList();
+  },
+});
+
+
 /**
  * repeated int32 accesses = 8;
  * @return {!Array<number>}
@@ -481,6 +560,16 @@ proto.dawn.Article.prototype.clearAccessesList = function() {
 };
 
 
+Object.defineProperty(proto.dawn.Article.prototype, "labelsMap", {
+  set: function(value) {
+    this.setLabelsMap(value);
+  },
+  get: function() {
+    return this.getLabelsMap();
+  },
+});
+
+
 /**
  * map<string, string> labels = 9;
  * @param {boolean=} opt_noLazyCreate Do not create the map if
@@ -500,6 +589,16 @@ proto.dawn.Article.prototype.getLabelsMap = function(opt_noLazyCreate) {
 proto.dawn.Article.prototype.clearLabelsMap = function() {
   this.getLabelsMap().clear();
 };
+
+
+Object.defineProperty(proto.dawn.Article.prototype, "created", {
+  set: function(value) {
+    this.setCreated(value);
+  },
+  get: function() {
+    return this.getCreated();
+  },
+});
 
 
 /**
@@ -671,6 +770,16 @@ proto.dawn.Location.serializeBinaryToWriter = function(message, writer) {
 };
 
 
+Object.defineProperty(proto.dawn.Location.prototype, "latitude", {
+  set: function(value) {
+    this.setLatitude(value);
+  },
+  get: function() {
+    return this.getLatitude();
+  },
+});
+
+
 /**
  * optional float latitude = 1;
  * @return {number}
@@ -686,6 +795,16 @@ proto.dawn.Location.prototype.setLatitude = function(value) {
 };
 
 
+Object.defineProperty(proto.dawn.Location.prototype, "longitude", {
+  set: function(value) {
+    this.setLongitude(value);
+  },
+  get: function() {
+    return this.getLongitude();
+  },
+});
+
+
 /**
  * optional float longitude = 2;
  * @return {number}
@@ -699,6 +818,16 @@ proto.dawn.Location.prototype.getLongitude = function() {
 proto.dawn.Location.prototype.setLongitude = function(value) {
   jspb.Message.setProto3FloatField(this, 2, value);
 };
+
+
+Object.defineProperty(proto.dawn.Location.prototype, "name", {
+  set: function(value) {
+    this.setName(value);
+  },
+  get: function() {
+    return this.getName();
+  },
+});
 
 
 /**
