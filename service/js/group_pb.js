@@ -1,3 +1,4 @@
+// source: group.proto
 /**
  * @fileoverview
  * @enhanceable
@@ -229,16 +230,6 @@ proto.dawn.Group.serializeBinaryToWriter = function(message, writer) {
 };
 
 
-Object.defineProperty(proto.dawn.Group.prototype, "id", {
-  set: function(value) {
-    this.setId(value);
-  },
-  get: function() {
-    return this.getId();
-  },
-});
-
-
 /**
  * optional string id = 1;
  * @return {string}
@@ -252,16 +243,6 @@ proto.dawn.Group.prototype.getId = function() {
 proto.dawn.Group.prototype.setId = function(value) {
   jspb.Message.setProto3StringField(this, 1, value);
 };
-
-
-Object.defineProperty(proto.dawn.Group.prototype, "name", {
-  set: function(value) {
-    this.setName(value);
-  },
-  get: function() {
-    return this.getName();
-  },
-});
 
 
 /**
@@ -279,16 +260,6 @@ proto.dawn.Group.prototype.setName = function(value) {
 };
 
 
-Object.defineProperty(proto.dawn.Group.prototype, "description", {
-  set: function(value) {
-    this.setDescription(value);
-  },
-  get: function() {
-    return this.getDescription();
-  },
-});
-
-
 /**
  * optional string description = 3;
  * @return {string}
@@ -304,16 +275,6 @@ proto.dawn.Group.prototype.setDescription = function(value) {
 };
 
 
-Object.defineProperty(proto.dawn.Group.prototype, "icon", {
-  set: function(value) {
-    this.setIcon(value);
-  },
-  get: function() {
-    return this.getIcon();
-  },
-});
-
-
 /**
  * optional string icon = 4;
  * @return {string}
@@ -327,16 +288,6 @@ proto.dawn.Group.prototype.getIcon = function() {
 proto.dawn.Group.prototype.setIcon = function(value) {
   jspb.Message.setProto3StringField(this, 4, value);
 };
-
-
-Object.defineProperty(proto.dawn.Group.prototype, "membersList", {
-  set: function(value) {
-    this.setMembersList(value);
-  },
-  get: function() {
-    return this.getMembersList();
-  },
-});
 
 
 /**
@@ -371,16 +322,6 @@ proto.dawn.Group.prototype.clearMembersList = function() {
 };
 
 
-Object.defineProperty(proto.dawn.Group.prototype, "labelsMap", {
-  set: function(value) {
-    this.setLabelsMap(value);
-  },
-  get: function() {
-    return this.getLabelsMap();
-  },
-});
-
-
 /**
  * map<string, string> labels = 6;
  * @param {boolean=} opt_noLazyCreate Do not create the map if
@@ -400,16 +341,6 @@ proto.dawn.Group.prototype.getLabelsMap = function(opt_noLazyCreate) {
 proto.dawn.Group.prototype.clearLabelsMap = function() {
   this.getLabelsMap().clear();
 };
-
-
-Object.defineProperty(proto.dawn.Group.prototype, "created", {
-  set: function(value) {
-    this.setCreated(value);
-  },
-  get: function() {
-    return this.getCreated();
-  },
-});
 
 
 /**

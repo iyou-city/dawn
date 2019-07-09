@@ -1,3 +1,4 @@
+// source: user.proto
 /**
  * @fileoverview
  * @enhanceable
@@ -234,16 +235,6 @@ proto.dawn.User.serializeBinaryToWriter = function(message, writer) {
 };
 
 
-Object.defineProperty(proto.dawn.User.prototype, "id", {
-  set: function(value) {
-    this.setId(value);
-  },
-  get: function() {
-    return this.getId();
-  },
-});
-
-
 /**
  * optional string id = 1;
  * @return {string}
@@ -257,16 +248,6 @@ proto.dawn.User.prototype.getId = function() {
 proto.dawn.User.prototype.setId = function(value) {
   jspb.Message.setProto3StringField(this, 1, value);
 };
-
-
-Object.defineProperty(proto.dawn.User.prototype, "name", {
-  set: function(value) {
-    this.setName(value);
-  },
-  get: function() {
-    return this.getName();
-  },
-});
 
 
 /**
@@ -284,16 +265,6 @@ proto.dawn.User.prototype.setName = function(value) {
 };
 
 
-Object.defineProperty(proto.dawn.User.prototype, "password", {
-  set: function(value) {
-    this.setPassword(value);
-  },
-  get: function() {
-    return this.getPassword();
-  },
-});
-
-
 /**
  * optional string password = 3;
  * @return {string}
@@ -307,16 +278,6 @@ proto.dawn.User.prototype.getPassword = function() {
 proto.dawn.User.prototype.setPassword = function(value) {
   jspb.Message.setProto3StringField(this, 3, value);
 };
-
-
-Object.defineProperty(proto.dawn.User.prototype, "telephone", {
-  set: function(value) {
-    this.setTelephone(value);
-  },
-  get: function() {
-    return this.getTelephone();
-  },
-});
 
 
 /**
@@ -334,16 +295,6 @@ proto.dawn.User.prototype.setTelephone = function(value) {
 };
 
 
-Object.defineProperty(proto.dawn.User.prototype, "icon", {
-  set: function(value) {
-    this.setIcon(value);
-  },
-  get: function() {
-    return this.getIcon();
-  },
-});
-
-
 /**
  * optional string icon = 5;
  * @return {string}
@@ -359,16 +310,6 @@ proto.dawn.User.prototype.setIcon = function(value) {
 };
 
 
-Object.defineProperty(proto.dawn.User.prototype, "signature", {
-  set: function(value) {
-    this.setSignature(value);
-  },
-  get: function() {
-    return this.getSignature();
-  },
-});
-
-
 /**
  * optional string signature = 6;
  * @return {string}
@@ -382,16 +323,6 @@ proto.dawn.User.prototype.getSignature = function() {
 proto.dawn.User.prototype.setSignature = function(value) {
   jspb.Message.setProto3StringField(this, 6, value);
 };
-
-
-Object.defineProperty(proto.dawn.User.prototype, "labelsMap", {
-  set: function(value) {
-    this.setLabelsMap(value);
-  },
-  get: function() {
-    return this.getLabelsMap();
-  },
-});
 
 
 /**
@@ -413,16 +344,6 @@ proto.dawn.User.prototype.getLabelsMap = function(opt_noLazyCreate) {
 proto.dawn.User.prototype.clearLabelsMap = function() {
   this.getLabelsMap().clear();
 };
-
-
-Object.defineProperty(proto.dawn.User.prototype, "created", {
-  set: function(value) {
-    this.setCreated(value);
-  },
-  get: function() {
-    return this.getCreated();
-  },
-});
 
 
 /**
